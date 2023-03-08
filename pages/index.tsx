@@ -15,6 +15,7 @@ import superhuman from "../asset/superhuman.jpg";
 import venture from "../asset/venture.jpg";
 import sea from "../asset/sea.jpg";
 
+
 export default function Home() {
   return (
     <>
@@ -68,7 +69,7 @@ export default function Home() {
                 and online stores.
               </p>
               <div className={styles.btn}>
-                <a href="#" className={styles.btn_link}>
+                <a href="https://my.indeed.com/p/nityah-d5n3bq4" className={styles.btn_link}>
                   Download Resume
                 </a>
               </div>
@@ -268,9 +269,9 @@ export default function Home() {
            <div className="container">
            <div className={styles.content}>
               <h2 className="h2">
-                I'm open to contract work or full-time positions.
+                I&apos;m open to contract work or full-time positions.
               </h2>
-              <a href="" className="btn_link">
+              <a href="https://my.indeed.com/p/nityah-d5n3bq4" className="btn_link">
                 Download Resume
               </a>
             </div>
@@ -284,14 +285,14 @@ export default function Home() {
                 we specialize in creating custom websites that are tailored to
                 meet the unique needs of our clients. With our expertise in web
                 design, development, and digital marketing, we can help you
-                achieve your online goals and stand out in today's competitive
+                achieve your online goals and stand out in today&apos;s competitive
                 digital landscape. Let us help you take your online presence to
                 the next level. Contact us today to learn more about our
                 services.
               </p>
 
               <div className={"btn"}>
-                <a href="#" className={"btn_link"}>
+                <a href="https://my.indeed.com/p/nityah-d5n3bq4" className={"btn_link"}>
                   Download Resume
                 </a>
               </div>
