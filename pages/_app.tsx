@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
       outerSize={14}
       color='255, 255, 255'
       outerAlpha={0.1}
-      innerScale={0.7}
+      innerScale={2}
       outerScale={1.2}
       clickables={[
         'a',
