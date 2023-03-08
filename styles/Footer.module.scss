@@ -1,0 +1,26 @@
+.footer_main {
+    padding: 90px 0;
+    background: rgb(0 0 0 / 85%);
+    position: relative;
+    h2{
+        margin: 0;
+    }
+}
+
+
+
+.socbox {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 2rem 0 0;
+    .soc {
+        display: flex;
+        gap: 10px;
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+    }
+}

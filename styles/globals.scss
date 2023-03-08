@@ -93,6 +93,9 @@ body {
       #0e1d2d
     )
     rgb(var(--background-start-rgb));
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 a {
@@ -112,10 +115,45 @@ a {
 }
 
 .container {
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 p {
   margin-bottom: 1rem;
+}
+img{
+  max-width: 100%;
+}
+
+.fixed_image {
+  display: flex;
+  height: 70vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  transition: all 2s;
+}
+
+.btn_link {
+  border: 1px solid transparent;
+  cursor: pointer !important;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  text-decoration: none !important;
+  transition: 0.4s;
+  background: transparent;
+  border-color: #ff9301;
+  border-radius: 1.6rem;
+  padding: 0rem 3rem;
+  font-size: 0.8rem;
+  line-height: 2.8rem;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 2rem;
 }
