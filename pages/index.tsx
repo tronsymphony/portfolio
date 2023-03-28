@@ -7,13 +7,59 @@ const inter = Inter({ subsets: ["latin"] });
 
 import Image from "next/image";
 import code from "../asset/code.jpg";
-import bend from "../asset/bend.jpg";
+import fbr from "../asset/fbr.jpg";
 import muse from "../asset/muse.jpg";
-import phrase from "../asset/phrase.jpg";
+import stonefire from "../asset/stonefire.jpg";
 import irene from "../asset/irene.jpg";
-import superhuman from "../asset/superhuman.jpg";
+import nowrx from "../asset/nowrx.jpg";
 import venture from "../asset/venture.jpg";
-import sea from "../asset/sea.jpg";
+import sea from "../asset/sea.webp";
+
+import * as THREE from 'three'
+import { Suspense } from 'react'
+import { Canvas, useThree, useFrame } from '@react-three/fiber'
+import { Text } from '@react-three/drei'
+import { LayerMaterial, Depth, Noise } from 'lamina'
+import Noodles from './Noodles'
+
+interface Props {
+  // any props that come into the component
+}
+
+function Caption({ children } :{children:any}) {
+  const { width } = useThree((state) => state.viewport)
+  return (
+    <Text
+      position={[0, 0, -5]}
+      lineHeight={0.8}
+      font="/Ki-Medium.ttf"
+      fontSize={width / 8}
+      material-toneMapped={false}
+      anchorX="center"
+      anchorY="middle">
+      {children}
+    </Text>
+  )
+}
+
+function Rig({ v = new THREE.Vector3() }) {
+  return useFrame((state) => {
+    state.camera.position.lerp(v.set(state.mouse.x / 2, state.mouse.y / 2, 10), 0.05)
+  })
+}
+
+function Bg() {
+  return (
+    <mesh scale={100}>
+      <boxGeometry args={[1, 1, 1]} />
+      <LayerMaterial side={THREE.BackSide}>
+        <Depth colorB="grey" colorA="black" alpha={1} mode="normal" near={130} far={200} origin={[100, 100, -100]} />
+        <Noise mapping="local" type="white" scale={1000} colorA="white" colorB="black" mode="subtract" alpha={0.2} />
+      </LayerMaterial>
+    </mesh>
+  )
+}
+
 
 
 export default function Home() {
@@ -64,19 +110,28 @@ export default function Home() {
               <h1 className={styles.h1}>Nitya Hoyos</h1>
               <span className={styles.title}>Full-stack developer</span>
               <p className={styles.context}>
-                I design and develop services for customers of all sizes,
-                specializing in creating stylish, modern websites, web services
-                and online stores.
+               Im a  full-stack developer with a passion for building beautiful, functional, and secure web applications. With around 6 years of experience in the field, I have a deep understanding of both the front-end and back-end technologies, including HTML, CSS, JavaScript, React, Node.js, SQL, and more.
+               </p>  <p className={styles.context}>
+My expertise lies in creating responsive, user-friendly, and highly scalable web applications that meet the needs of clients and end-users alike. I enjoy collaborating with cross-functional teams and working on complex projects that challenge me to learn and grow as a developer.
+</p><p className={styles.context}>
+When I&apos;m not coding, you can find me exploring new technologies, attending developer meetups, or practicing yoga. If you&apos;re looking for a full-stack developer who is committed to delivering top-quality work and providing excellent customer service, I&apos;m the one you need. Let&apos;s work together and build something great!
               </p>
               <div className={styles.btn}>
-                <a href="https://my.indeed.com/p/nityah-d5n3bq4" className={styles.btn_link}>
-                  Download Resume
+                <a href="mailto:nityahoyos@gmail.com" className={styles.btn_link}>
+                  Get In Touch
                 </a>
               </div>
             </div>
           </div>
 
-          <section className={styles.followme}>
+          
+
+        
+        </section>
+        <section className={styles.followme}>
+            <div className={styles.phone}>
+              <a href="tel:424-269-4720">+1 (424) 269-4720</a>
+            </div>
             <div className={styles.socbox}>
               <div className={styles.followlabel}>Follow Me</div>
               <div className={styles.soc}>
@@ -118,8 +173,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-        </section>
-
         <section className={styles.portfolio}>
           <div className={styles.container}>
             <header className={styles.header}>
@@ -131,18 +184,18 @@ export default function Home() {
                   <div className={styles.portfolio_info}>
                     <h5>
                       <a
-                        href="https://www.bendhealth.com/"
+                        href="https://brileyfin.com/"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Bend Health
+                        B Riley Financial
                       </a>
                     </h5>
-                    <span>React JS | Wordpress</span>
+                    <span>Wordpress</span>
                   </div>
                   <div className={styles.gallery_link}>
-                    <a href="https://www.bendhealth.com/">
-                      <img src={bend.src} alt="Childhood" role="button"></img>
+                    <a href="https://brileyfin.com/">
+                      <img src={fbr.src} alt="Childhood" role="button"></img>
                     </a>
                   </div>
                 </div>
@@ -152,18 +205,18 @@ export default function Home() {
                   <div className={styles.portfolio_info}>
                     <h5>
                       <a
-                        href="https://phrase.com/"
+                        href="https://www.stonefiregrill.com/"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Phrase
+                        Stone Fire Grill
                       </a>
                     </h5>
                     <span>Wordpress</span>
                   </div>
                   <div className={styles.gallery_link}>
-                    <a href="https://phrase.com/">
-                      <img src={phrase.src} alt="Childhood" role="button"></img>
+                    <a href="https://www.stonefiregrill.com/">
+                      <img src={stonefire.src} alt="Childhood" role="button"></img>
                     </a>
                   </div>
                 </div>
@@ -173,19 +226,19 @@ export default function Home() {
                   <div className={styles.portfolio_info}>
                     <h5>
                       <a
-                        href="https://superhuman.agency/"
+                        href="https://nowrx.com/"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Superhuman Agency
+                        NowRx Pharmacy
                       </a>
                     </h5>
                     <span>Wordpress</span>
                   </div>
                   <div className={styles.gallery_link}>
-                    <a href="https://superhuman.agency/">
+                    <a href="https://nowrx.com/">
                       <img
-                        src={superhuman.src}
+                        src={nowrx.src}
                         alt="Childhood"
                         role="button"
                       ></img>
@@ -261,39 +314,22 @@ export default function Home() {
             
           </div>
         </section>
+
+        
+
         <section className={styles.services}>
-          <div
-            className={styles.service_image}
-            style={{ backgroundImage: `url(${code.src})` }}
-          >
-           <div className="container">
-           <div className={styles.content}>
-              <h2 className="h2">
-                I&apos;m open to contract work or full-time positions.
-              </h2>
-              <a href="https://my.indeed.com/p/nityah-d5n3bq4" className="btn_link">
-                Download Resume
-              </a>
-            </div>
-           </div>
-          </div>
+         
 
           <div className={styles.container}>
             <header className={styles.heade}>
               <h2 className={styles.h2}>Services & Technologies.</h2>
               <p>
-                we specialize in creating custom websites that are tailored to
-                meet the unique needs of our clients. With our expertise in web
-                design, development, and digital marketing, we can help you
-                achieve your online goals and stand out in today&apos;s competitive
-                digital landscape. Let us help you take your online presence to
-                the next level. Contact us today to learn more about our
-                services.
+              Transform your vision into a reality with my expert development skills. From ideation to launch, I&apos;ll bring your project to life with cutting-edge technology and unparalleled attention to detail.
               </p>
 
               <div className={"btn"}>
-                <a href="https://my.indeed.com/p/nityah-d5n3bq4" className={"btn_link"}>
-                  Download Resume
+                <a href="mailto:nityahoyos@gmail.com" className={"btn_link"}>
+                  Get In Touch
                 </a>
               </div>
             </header>
@@ -301,27 +337,14 @@ export default function Home() {
               <div className={styles.item}>
                 <h3 className={styles.h3}>ecommerce</h3>
                 <p>
-                  An ecommerce platform makes online shopping easy and
-                  enjoyable. With a wide selection of high-quality products,
-                  user-friendly interface, secure checkout options, and fast
-                  shipping, we offer everything you need to shop from the
-                  comfort of your own home. Try a platform today and experience
-                  the convenience and satisfaction of ecommerce shopping.
+                As an eCommerce developer, I can help you take your business online and reach a wider audience. With my expertise in building secure and user-friendly eCommerce websites, you can provide a seamless shopping experience for your customers, whether they&apos;re on a desktop or mobile device.
                 </p>
               </div>
 
               <div className={styles.item}>
                 <h3 className={styles.h3}>React JS</h3>
                 <p>
-                  Take your web application to the next level with our ReactJS
-                  development services. Our team of experienced developers can
-                  help you build fast, responsive, and highly interactive web
-                  applications using the latest technologies and best practices.
-                  From ideation to deployment, we work closely with you to
-                  ensure your project meets your specific requirements and
-                  delivers a seamless user experience. Contact us today to learn
-                  more about our ReactJS development services and take the first
-                  step towards a better web application.
+                React JS is a popular JavaScript library used for building dynamic and interactive user interfaces. As a React JS developer, I specialize in creating fast, scalable, and maintainable web applications that provide an exceptional user experience. By using React JS, I can help you build a responsive and engaging website that meets your business goals and exceeds your customers&apos; expectations.
                 </p>
               </div>
               <div className={styles.item}>
@@ -331,23 +354,16 @@ export default function Home() {
                   specialize in Wordpress design, development, and maintenance,
                   ensuring that your website runs smoothly and effectively. Our
                   team of experts can help you create a stunning website that
-                  attracts and engages your audience. Plus, we offer ongoing
+                  attracts and engages your audience. Plus, I offer ongoing
                   support to ensure that your website stays up-to-date and
-                  secure. Contact us today to learn how we can take your
+                  secure. Contact us today to learn how I can take your
                   Wordpress website to the next level.
                 </p>
               </div>
               <div className={styles.item}>
                 <h3 className={styles.h3}>Shopify</h3>
                 <p>
-                  Take your business online with our Shopify services! Our team
-                  of experts will help you set up your online store on the
-                  powerful Shopify platform, with features such as secure
-                  payments, customizable templates, and seamless integration
-                  with your existing systems. With our support, you can focus on
-                  growing your business while we handle the technical details.
-                  Get started with Shopify today and start selling to customers
-                  all over the world.
+                If you&apos;re looking to build a website, WordPress is a great option. It&apos;s a user-friendly, customizable, and versatile platform that powers over 40% of all websites on the internet. As a WordPress developer, I have the expertise to help you create a stunning and functional website that meets your needs and goals. I can handle everything from customizing themes and plugins to optimizing your site for search engines and improving its performance. With my WordPress service, you can have a website that not only looks great but also performs well and delivers an outstanding user experience.
                 </p>
               </div>
               <div className={styles.item}>
@@ -358,19 +374,33 @@ export default function Home() {
                   top-notch development solutions that are efficient, scalable,
                   and secure. With a range of features such as robust
                   authentication systems, efficient routing, and powerful
-                  templates, we can create a custom web application that meets
+                  templates, I can create a custom web application that meets
                   your unique needs. Let us help you bring your ideas to life
                   and take your business to the next level with Laravel. Contact
                   us today to learn more.
                 </p>
               </div>
+              <div className={styles.item}>
+                <h3 className={styles.h3}>web design</h3>
+                <p>
+                As a web design developer, I specialize in creating websites that not only look beautiful but also function seamlessly. My web design service involves taking your unique vision and turning it into a professional and user-friendly website that attracts visitors and drives conversions.
+
+Using the latest design techniques and technologies, I work closely with you to ensure that every aspect of your website meets your specific needs and goals. From layout and color schemes to functionality and usability, I ensure that your website stands out from the competition and delivers a positive user experience.
+                </p>
+              </div>
             </div>
           </div>
         </section>
-        <div
-          className={"fixed_image"}
-          style={{ backgroundImage: `url(${sea.src})` }}
-        ></div>
+        <section className={styles.services}>
+        <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 22 }}  style={{ height: `100vh` }}>
+          <Bg />
+          <Suspense fallback={null}>
+            <Noodles></Noodles>
+            <Caption>{`Nitya\nHoyos\nDeveloper`}</Caption>
+            <Rig />
+          </Suspense>
+        </Canvas>
+        </section>
       </main>
       <Footer />
     </>
