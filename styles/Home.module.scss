@@ -8,7 +8,7 @@
 
 
   object-fit: cover;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -19,7 +19,7 @@
   @media screen and (min-width:768px) {
     height: 100%;
     object-fit: cover;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -401,9 +401,12 @@ section.services {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 1rem;
     border: 1px solid hsla(0, 0%, 100%, .15);
     position: relative;
+    @media screen and (min-width:768px) {
+      padding: 2rem;
+    }
 
     &:after {
       content: "1";
@@ -470,6 +473,9 @@ section.services {
   }
 
   header.heade {
-    padding-right: 60px;
+
+    @media screen and (min-width:768px) {
+      padding-right: 60px;
+    }
   }
 }

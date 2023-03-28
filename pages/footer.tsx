@@ -8,7 +8,9 @@ export default function Footer() {
           <div className="content">
             <h2 className="h2">Get in touch with me.</h2>
             <p>From front-end to back-end and everything in between, let&apos;s build something amazing together. Work with me to bring your vision to life with top-notch coding, seamless integration, and unparalleled functionality.</p>
-            <a href="https://my.indeed.com/p/nityah-d5n3bq4" className="btn_link">Download Resume</a>
+            <a href="mailto:nityahoyos@gmail.com" className="btn_link">
+                  Get In Touch
+                </a>
           </div>
           <div className={styles.socbox}>
               <div className={styles.followlabel}>Follow Me</div>
