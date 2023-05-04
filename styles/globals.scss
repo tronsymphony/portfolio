@@ -139,32 +139,37 @@ img{
   background-attachment: fixed;
   position: relative;
   transition: all 2s;
-
   margin-left: 50px;
 }
 
 .btn_link {
-  border: 1px solid transparent;
   cursor: pointer !important;
-  display: inline-block;
-  font-weight: 500;
   position: relative;
   text-decoration: none !important;
   transition: 0.4s;
   background: transparent;
+  border: none;
   border-color: #ff9301;
-  padding:.8rem 2rem;
-  font-size: 0.8rem;
-  line-height:1.4;
-  letter-spacing: -.02em;
-  text-transform: uppercase;
-  color: #fff;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
   margin-top: 2rem;
+  gap: 20px;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+
   &:hover{
-    background-color: #ff9301;
-    color: #fff;
+    // background-color: #ff9301;
+    // color: #fff;
+    opacity: .5;
+    text-decoration: underline;
+  }
+  &.btn_link--light {
+    color: #000;
   }
   @media screen and (min-width:768px) {
-    padding: .8rem 3rem;
   }
 }
