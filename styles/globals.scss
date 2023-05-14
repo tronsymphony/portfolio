@@ -93,9 +93,13 @@ body {
       #0e1d2d
     )
     rgb(var(--background-start-rgb));
-    font-family: "Montserrat", sans-serif;
+    // font-family: "Montserrat", sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-size: 1rem;
     line-height: 1.4;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Syncopate', sans-serif;
 }
 
 a {
@@ -169,6 +173,8 @@ img{
   }
   &.btn_link--light {
     color: #000;
+    background: #FFFB96;
+    padding: 10px;
   }
   @media screen and (min-width:768px) {
   }

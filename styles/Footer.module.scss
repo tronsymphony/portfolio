@@ -1,12 +1,17 @@
 .footer_main {
     padding: 10rem 0;
-    background: #151718;
+    background: #222255;
     position: relative;
     padding-left: 50px;
-    h2{
+    background-image: url(../public/gif.gif);
+    background-position: center center;
+    background-attachment: fixed;
+
+    h2 {
         margin: 0;
     }
-    .content{
+
+    .content {
         text-align: center;
         max-width: 840px;
         margin: 0 auto;
@@ -25,6 +30,7 @@
     .soc {
         display: flex;
         gap: 10px;
+
         svg {
             width: 20px;
             height: 20px;
@@ -33,7 +39,7 @@
     }
 }
 
-.formstyling{
+.formstyling {
     padding: 30px;
     color: #000;
     display: grid;

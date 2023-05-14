@@ -18,7 +18,7 @@ export default function Footer() {
             </p>
             <Popup
               trigger={
-                <button className="btn_link">
+                <button className="btn_link btn_link--light">
                   Start a project request
                   <span className={styles.chevron}>
                     <svg

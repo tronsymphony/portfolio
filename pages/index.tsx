@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Footer from "./footer";
+import { useState, useRef } from 'react'
 
 import Image from "next/image";
 import code from "../asset/code.jpg";
@@ -24,27 +25,54 @@ import {
   Environment,
   Effects as EffectComposer,
   useTexture,
+  OrbitControls,
+  PerspectiveCamera,
+  Points, PointMaterial
 } from "@react-three/drei";
 import { SSAOPass } from "three-stdlib";
+import { buffer, random } from "maath";
+
+
 
 extend({ SSAOPass });
 
 const rfs = THREE.MathUtils.randFloatSpread;
-const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+const sphereGeometry = new THREE.SphereGeometry(.5, 20, 20);
 const baubleMaterial = new THREE.MeshStandardMaterial({
-  color: "white",
-  roughness: 0,
-  envMapIntensity: 0.1,
+  color: "#00eeee",
+  roughness: 10,
+  envMapIntensity: 0.5,
   emissive: "#000",
 });
+//@ts-ignore
+function Stars(props) {
+  const ref = useRef()
+  //@ts-ignore
+  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
+  useFrame((state, delta) => {
+    //@ts-ignore
+    ref.current.rotation.x -= delta / 10
+    //@ts-ignore
+    ref.current.rotation.y -= delta / 15
+  })
+  return (
+    //@ts-ignore
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
+        <PointMaterial transparent color="#ffa0e0" size={0.005} sizeAttenuation={true} depthWrite={false} />
+      </Points>
+    </group>
+  )
+}
+
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>
-          Nitya Hoyos | Full-Stack, Wordpress, Laravel, ReactJS, NodeJS and Shopify Developer
-          available for hire or contract work.
+          Nitya Hoyos | Full-Stack, Wordpress, Laravel, ReactJS, NodeJS and
+          Shopify Developer available for hire or contract work.
         </title>
         <meta
           name="description"
@@ -54,65 +82,39 @@ export default function Home() {
         <link rel="icon" href="./favicon.ico" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@200;300;500;600;800&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@200;300;500;600;800&display=swap"
-          rel="stylesheet"
-        ></link>
+        <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;300;700&family=Oswald:wght@200;400;500;600;700&family=Roboto+Mono:wght@300;500;700&family=Space+Mono:wght@400;700&family=Syncopate:wght@400;700&family=VT323&family=Yellowtail&display=swap" rel="stylesheet"></link>
       </Head>
 
       <main className={styles.main}>
         <section className={styles.welcome}>
           <div className={styles.video__fullscreen}>
-            {/* <video autoPlay loop playsInline muted>
-              <source
-                src="https://player.vimeo.com/video/806009163?background=1"
-                type="video/mp4"
-                sizes="1080"
-              ></source>
-              <source
-                src="https://player.vimeo.com/external/367853827.hd.mp4?s=14d52988ba245932614cfe16bf3778ec72f720b3&amp;profile_id=174"
-                type="video/mp4"
-                sizes="720"
-              ></source>
-              <source
-                src="https://player.vimeo.com/external/367853827.sd.mp4?s=31bbc714deea5c007440274cf54a6b66b9f415f5&amp;profile_id=165"
-                type="video/mp4"
-                sizes="576"
-              ></source>
-              <source
-                src="https://player.vimeo.com/external/367853827.sd.mp4?s=31bbc714deea5c007440274cf54a6b66b9f415f5&amp;profile_id=164"
-                type="video/mp4"
-                sizes="360"
-              ></source>
-            </video> */}
             <Canvas
               shadows
-              dpr={[1, 2]}
-              camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}
+              dpr={[1, 1]}
             >
-              <ambientLight intensity={0.25} />
-              <spotLight
-                intensity={1}
-                angle={1.2}
-                penumbra={1}
-                position={[30, 30, 30]}
-                castShadow
-                shadow-mapSize={[512, 512]}
+               <PerspectiveCamera
+                near={0.5} //
+                far={50}
+                position={[0, 0, 1]}
+                makeDefault
+                fov={60}
               />
+              <pointLight
+                castShadow
+                intensity={0.8}
+                position={[100, 100, 100]}
+              />
+              <ambientLight intensity={0.45} />
               <directionalLight
                 intensity={5}
                 position={[-10, -10, -10]}
-                color="teal"
+                color="pink"
               />
               <Physics gravity={[0, 1, 0]} iterations={5}>
                 <Pointer />
                 <Clump />
               </Physics>
-              <Sky />
+              <Stars  />
             </Canvas>
           </div>
           <div className={styles.container}>
@@ -123,7 +125,8 @@ export default function Home() {
               </h1>
 
               <p className={styles.context}>
-                I&apos;m a full-stack developer engineering elegant, performant, and powerful web applications.
+                I&apos;m a full-stack developer engineering elegant, performant,
+                and powerful web applications.
               </p>
             </div>
           </div>
@@ -265,7 +268,9 @@ export default function Home() {
                 </h5>
                 <span>Powered by: Shopify, Javascript, HTML, SCSS, BEM</span>
                 <div className={styles.case_about}>
-                Organic Olivia is a modern approach to traditional herbal medicine. We blend science with intuition to create focused formulas that get to the root cause.
+                  Organic Olivia is a modern approach to traditional herbal
+                  medicine. We blend science with intuition to create focused
+                  formulas that get to the root cause.
                 </div>
                 <a
                   href="https://www.organicolivia.com/"
@@ -391,7 +396,8 @@ export default function Home() {
                     <a href="https://ireneneuwirth.com/" target="_blank">
                       <h3 className="title">Irene Neuwirth</h3>
                       <p>
-                        High-end boutique showcasing the eponymous designer&apos;s bold, colorful necklaces & earrings.
+                        High-end boutique showcasing the eponymous
+                        designer&apos;s bold, colorful necklaces & earrings.
                       </p>
                     </a>
                   </div>
@@ -406,12 +412,15 @@ export default function Home() {
                     </a>
                   </div>
                   <div className={styles.project}>
-                    <a
-                      href="https://seed.com/"
-                      target="_blank"
-                    >
+                    <a href="https://seed.com/" target="_blank">
                       <h3 className="title">Seed</h3>
-                      <p>Seed Health, popularly known as Seed, is an American health and life science company, most known for developing probiotics. Founded in 2015 by Ara Katz and Raja Dhir, Seed was founded to &ldquo;use bacteria to improve human and environmental health&ldquo;.</p>
+                      <p>
+                        Seed Health, popularly known as Seed, is an American
+                        health and life science company, most known for
+                        developing probiotics. Founded in 2015 by Ara Katz and
+                        Raja Dhir, Seed was founded to &ldquo;use bacteria to
+                        improve human and environmental health&ldquo;.
+                      </p>
                     </a>
                   </div>
                 </div>
@@ -433,7 +442,7 @@ export default function Home() {
               </p>
 
               <div className={"btn"}>
-                <a href="mailto:nityahoyos@gmail.com" className={"btn_link"}>
+                <a href="mailto:nityahoyos@gmail.com" className={"btn_link btn_link--light"}>
                   Get In Touch
                   <span className={styles.chevron}>
                     <svg
@@ -552,10 +561,10 @@ function Clump({
     mass: 1,
     angularDamping: 0.1,
     linearDamping: 0.65,
-    position: [rfs(20), rfs(20), rfs(20)],
+    position: [rfs(40), rfs(40), rfs(400)],
   }));
   useFrame((state) => {
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 15; i++) {
       // Get current whereabouts of the instanced sphere
       //@ts-ignore
       ref.current.getMatrixAt(i, mat);
@@ -567,7 +576,7 @@ function Clump({
           vec
             .setFromMatrixPosition(mat)
             .normalize()
-            .multiplyScalar(-50)
+            .multiplyScalar(-20)
             .toArray(),
           [0, 0, 0]
         );
@@ -575,12 +584,12 @@ function Clump({
   });
   return (
     <instancedMesh
-    //@ts-ignore
+      //@ts-ignore
       ref={ref}
       castShadow
       receiveShadow
       //@ts-ignore
-      args={[null, null, 40]}
+      args={[null, null, 15]}
       geometry={sphereGeometry}
       material={baubleMaterial}
       material-map={texture}
@@ -592,8 +601,8 @@ function Pointer() {
   const viewport = useThree((state) => state.viewport);
   const [, api] = useSphere(() => ({
     type: "Kinematic",
-    args: [3],
-    position: [0, 0, 0],
+    args: [1.5],
+    position: [0, 0, 40],
   }));
   return useFrame((state) =>
     api.position.set(
@@ -603,4 +612,3 @@ function Pointer() {
     )
   );
 }
- 
