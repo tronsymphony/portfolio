@@ -3,15 +3,6 @@ import styles from "../styles/Home.module.scss";
 import Footer from "./footer";
 import { useState, useRef } from 'react'
 
-import Image from "next/image";
-import code from "../asset/code.jpg";
-import fbr from "../asset/fbr.jpg";
-// import muse from "../asset/muse.jpg";
-import stonefire from "../asset/stonefire.jpg";
-// import irene from "../asset/irene.jpg";
-import nowrx from "../asset/nowrx.jpg";
-import venture from "../asset/venture.jpg";
-import sea from "../asset/sea.webp";
 import device from "../asset/device-mbp-15-nonotch.png";
 import muse from "../asset/muse.webp";
 import organicolivia from "../asset/organicolivia.webp";
@@ -31,35 +22,29 @@ import {
 } from "@react-three/drei";
 import { SSAOPass } from "three-stdlib";
 import { buffer, random } from "maath";
-
+import Scene from '../components/scene';
+import { useSpring } from '@react-spring/core'
+import { a } from '@react-spring/web'
 
 
 extend({ SSAOPass });
 
-const rfs = THREE.MathUtils.randFloatSpread;
-const sphereGeometry = new THREE.SphereGeometry(.5, 20, 20);
-const baubleMaterial = new THREE.MeshStandardMaterial({
-  color: "#00eeee",
-  roughness: 10,
-  envMapIntensity: 0.5,
-  emissive: "#000",
-});
 //@ts-ignore
 function Stars(props) {
   const ref = useRef()
   //@ts-ignore
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
+  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 2 }))
   useFrame((state, delta) => {
     //@ts-ignore
-    ref.current.rotation.x -= delta / 10
+    ref.current.rotation.x -= delta / 50
     //@ts-ignore
-    ref.current.rotation.y -= delta / 15
+    ref.current.rotation.y -= delta / 10
   })
   return (
     //@ts-ignore
     <group rotation={[0, 0, Math.PI / 4]}>
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
-        <PointMaterial transparent color="#ffa0e0" size={0.005} sizeAttenuation={true} depthWrite={false} />
+        <PointMaterial transparent color="#05FFA1" size={0.005} sizeAttenuation={true} depthWrite={false} />
       </Points>
     </group>
   )
@@ -67,12 +52,13 @@ function Stars(props) {
 
 
 export default function Home() {
+  const [{ background }, set] = useSpring({ background: 'linear-gradient(45deg, #000, #222255)', fill: '#12071f' }, [])
   return (
     <>
       <Head>
         <title>
           Nitya Hoyos | Full-Stack, Wordpress, Laravel, ReactJS, NodeJS and
-          Shopify Developer available for hire or contract work.
+          Shopify Freelance Developer available for hire or contract work.
         </title>
         <meta
           name="description"
@@ -86,34 +72,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <section className={styles.welcome}>
+        {/* @ts-ignore   */}
+        <a.section className={styles.welcome} style={{ background }}>
           <div className={styles.video__fullscreen}>
-            <Canvas
-              shadows
-              dpr={[1, 1]}
-            >
-               <PerspectiveCamera
-                near={0.5} //
-                far={50}
-                position={[0, 0, 1]}
-                makeDefault
-                fov={60}
-              />
-              <pointLight
-                castShadow
-                intensity={0.8}
-                position={[100, 100, 100]}
-              />
-              <ambientLight intensity={0.45} />
-              <directionalLight
-                intensity={5}
-                position={[-10, -10, -10]}
-                color="pink"
-              />
-              <Physics gravity={[0, 1, 0]} iterations={5}>
-                <Pointer />
-                <Clump />
-              </Physics>
+            <Canvas className="canvas" dpr={[1, 2]}>
+                <Scene setBg={set} />
+                <OrbitControls enablePan={false} enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               <Stars  />
             </Canvas>
           </div>
@@ -121,16 +85,18 @@ export default function Home() {
             <div className={styles.content}>
               <span className={styles.subtitle}>Hello, my name is</span>
               <h1 className={styles.h1}>
-                Nityananda <br /> Hoyos
+                Nitya Hoyos<span>_</span>
               </h1>
-
               <p className={styles.context}>
                 I&apos;m a full-stack developer engineering elegant, performant,
                 and powerful web applications.
               </p>
+              <p className={styles.context}>
+                I am available for contract work or full-time positions.
+              </p>
             </div>
           </div>
-        </section>
+        </a.section>
         <section className={styles.followme}>
           <div className={styles.phone}>
             <a href="tel:424-269-4720">+1 (424) 269-4720</a>
@@ -179,7 +145,25 @@ export default function Home() {
         <section className={styles.portfolio}>
           <div className={styles.container}>
             <header className={styles.header}>
-              <h2 className={"h2"}>Work & Experience</h2>
+              <h2 className={"h2"}>Contract work and <br></br> agency projects</h2>
+              <p>
+              Leveraging established frameworks like WordPress CMS, Laravel, ReactJS, React Native, AWS Cloud, Git, and more…I construct highly performant, scalable, secure software in less time than ever before.  Striking a critical balance between custom development and framework implementation to ensure each project succeeds on time and on budget.
+              </p>
+              <a href="mailto:nityahoyos@gmail.com" className={"btn_link btn_link--light"}>
+                  Get In Touch
+                  <span className={styles.chevron}>
+                    <svg
+                      width="8"
+                      height="12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </span>
+                </a>
             </header>
             <div className={styles.showcase}>
               <div className={styles.device}>
@@ -220,7 +204,7 @@ export default function Home() {
                   href="https://www.godaddy.com/ventureforward/"
                   target="_blank"
                   rel="noreferrer"
-                  className={"btn_link btn_link--light"}
+                  className={"btn_link "}
                 >
                   View Site
                   <span className={styles.chevron}>
@@ -276,7 +260,7 @@ export default function Home() {
                   href="https://www.organicolivia.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className={"btn_link btn_link--light"}
+                  className={"btn_link "}
                 >
                   View Site
                   <span className={styles.chevron}>
@@ -333,7 +317,7 @@ export default function Home() {
                   href="https://choosemuse.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className={"btn_link btn_link--light"}
+                  className={"btn_link "}
                 >
                   View Site
                   <span className={styles.chevron}>
@@ -461,84 +445,36 @@ export default function Home() {
             </header>
             <div className={styles.content}>
               <div className={styles.item}>
-                <h3 className={styles.h3}>ecommerce</h3>
+                <h3 className={styles.h3}>Web Design</h3>
                 <p>
-                  As an eCommerce developer, I can help you take your business
-                  online and reach a wider audience. With my expertise in
-                  building secure and user-friendly eCommerce websites, you can
-                  provide a seamless shopping experience for your customers,
-                  whether they&apos;re on a desktop or mobile device.
+                I specialize in developing interactive, scalable, brand-oriented, and business-ready customized web design.
                 </p>
               </div>
 
               <div className={styles.item}>
-                <h3 className={styles.h3}>React JS</h3>
+                <h3 className={styles.h3}>Web Development</h3>
                 <p>
-                  React JS is a popular JavaScript library used for building
-                  dynamic and interactive user interfaces. As a React JS
-                  developer, I specialize in creating fast, scalable, and
-                  maintainable web applications that provide an exceptional user
-                  experience. By using React JS, I can help you build a
-                  responsive and engaging website that meets your business goals
-                  and exceeds your customers&apos; expectations.
+                Be it static, customized, or dynamic, I follow industry best practices to develop attractive and highly functional websites.
+
+
                 </p>
               </div>
               <div className={styles.item}>
-                <h3 className={styles.h3}>Wordpress</h3>
+                <h3 className={styles.h3}>E-commerce</h3>
                 <p>
-                  Maximize your online potential with our Wordpress services! We
-                  specialize in Wordpress design, development, and maintenance,
-                  ensuring that your website runs smoothly and effectively. Our
-                  team of experts can help you create a stunning website that
-                  attracts and engages your audience. Plus, I offer ongoing
-                  support to ensure that your website stays up-to-date and
-                  secure. Contact us today to learn how I can take your
-                  Wordpress website to the next level.
+                Robust, aesthetically pleasing, and conversion-focused e-commerce website development.
                 </p>
               </div>
               <div className={styles.item}>
-                <h3 className={styles.h3}>Shopify</h3>
+                <h3 className={styles.h3}>SEO</h3>
                 <p>
-                  If you&apos;re looking to build a website, WordPress is a
-                  great option. It&apos;s a user-friendly, customizable, and
-                  versatile platform that powers over 40% of all websites on the
-                  internet. As a WordPress developer, I have the expertise to
-                  help you create a stunning and functional website that meets
-                  your needs and goals. I can handle everything from customizing
-                  themes and plugins to optimizing your site for search engines
-                  and improving its performance. With my WordPress service, you
-                  can have a website that not only looks great but also performs
-                  well and delivers an outstanding user experience.
+                My carefully crafted SEO strategies are designed to increase visibility within the algorithmic search results to deliver relevant, targeted traffic to your website.
                 </p>
               </div>
               <div className={styles.item}>
-                <h3 className={styles.h3}>Laravel</h3>
+                <h3 className={styles.h3}>Digital Marketing</h3>
                 <p>
-                  Looking for a powerful and reliable web development framework?
-                  Look no further than Laravel! Our Laravel services provide
-                  top-notch development solutions that are efficient, scalable,
-                  and secure. With a range of features such as robust
-                  authentication systems, efficient routing, and powerful
-                  templates, I can create a custom web application that meets
-                  your unique needs. Let us help you bring your ideas to life
-                  and take your business to the next level with Laravel. Contact
-                  us today to learn more.
-                </p>
-              </div>
-              <div className={styles.item}>
-                <h3 className={styles.h3}>web design</h3>
-                <p>
-                  As a web design developer, I specialize in creating websites
-                  that not only look beautiful but also function seamlessly. My
-                  web design service involves taking your unique vision and
-                  turning it into a professional and user-friendly website that
-                  attracts visitors and drives conversions. Using the latest
-                  design techniques and technologies, I work closely with you to
-                  ensure that every aspect of your website meets your specific
-                  needs and goals. From layout and color schemes to
-                  functionality and usability, I ensure that your website stands
-                  out from the competition and delivers a positive user
-                  experience.
+                I specialize in digital marketing campaigns that delivers content that wow&apos;s across all paid advertising channels.
                 </p>
               </div>
             </div>
@@ -547,68 +483,5 @@ export default function Home() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function Clump({
-  mat = new THREE.Matrix4(),
-  vec = new THREE.Vector3(),
-  ...props
-}) {
-  const texture = useTexture("/cross.jpg");
-  const [ref, api] = useSphere(() => ({
-    args: [1],
-    mass: 1,
-    angularDamping: 0.1,
-    linearDamping: 0.65,
-    position: [rfs(40), rfs(40), rfs(400)],
-  }));
-  useFrame((state) => {
-    for (let i = 0; i < 15; i++) {
-      // Get current whereabouts of the instanced sphere
-      //@ts-ignore
-      ref.current.getMatrixAt(i, mat);
-      // Normalize the position and multiply by a negative force.
-      // This is enough to drive it towards the center-point.
-      api
-        .at(i)
-        .applyForce(
-          vec
-            .setFromMatrixPosition(mat)
-            .normalize()
-            .multiplyScalar(-20)
-            .toArray(),
-          [0, 0, 0]
-        );
-    }
-  });
-  return (
-    <instancedMesh
-      //@ts-ignore
-      ref={ref}
-      castShadow
-      receiveShadow
-      //@ts-ignore
-      args={[null, null, 15]}
-      geometry={sphereGeometry}
-      material={baubleMaterial}
-      material-map={texture}
-    />
-  );
-}
-
-function Pointer() {
-  const viewport = useThree((state) => state.viewport);
-  const [, api] = useSphere(() => ({
-    type: "Kinematic",
-    args: [1.5],
-    position: [0, 0, 40],
-  }));
-  return useFrame((state) =>
-    api.position.set(
-      (state.mouse.x * viewport.width) / 2,
-      (state.mouse.y * viewport.height) / 2,
-      0
-    )
   );
 }

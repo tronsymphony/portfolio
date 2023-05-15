@@ -99,7 +99,16 @@ body {
     line-height: 1.4;
 }
 h1,h2,h3,h4,h5,h6{
+  // font-family: 'Cutive Mono', monospace;
+  // font-family: 'DM Sans', sans-serif;
+  // font-family: 'Lato', sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+  // font-family: 'Oswald', sans-serif;
+  // font-family: 'Roboto Mono', monospace;
+  // font-family: 'Space Mono', monospace;
   font-family: 'Syncopate', sans-serif;
+  // font-family: 'VT323', monospace;
+  // font-family: 'Yellowtail', cursive;
 }
 
 a {
@@ -114,7 +123,7 @@ a {
 }
 
 .h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   @media screen and (min-width:768px) {
     font-size: 3rem;
@@ -124,7 +133,10 @@ a {
 .container {
   width: 100%;
   padding: 0 2rem;
-  margin: 0 auto;
+  padding:0 1rem 0 0rem;
+    @media screen and (min-width:768px) {
+      padding: 0 2rem;
+    }
 }
 
 p {
@@ -164,7 +176,7 @@ img{
   color: #fff;
   font-size: 20px;
   font-weight: 500;
-
+  font-family: "VT323", monospace;
   &:hover{
     // background-color: #ff9301;
     // color: #fff;
@@ -172,10 +184,12 @@ img{
     text-decoration: underline;
   }
   &.btn_link--light {
-    color: #000;
-    background: #FFFB96;
-    padding: 10px;
+    color: #fff;
+    background: #ff00dd;
+    padding: 10px 20px;
   }
   @media screen and (min-width:768px) {
   }
 }
+
+

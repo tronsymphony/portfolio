@@ -1,6 +1,6 @@
 .main {
   font-family: 'Cormorant', serif;
-  background: #12071f;
+  background: linear-gradient(45deg, #000, #222255);
   font-family: 'Montserrat', sans-serif;
   font-family: 'DM Sans', sans-serif;
   font-family: 'Space Mono', monospace;
@@ -8,10 +8,8 @@
 }
 
 .video__fullscreen {
-
-
   object-fit: cover;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -22,7 +20,6 @@
   @media screen and (min-width:768px) {
     height: 100%;
     object-fit: cover;
-    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -65,6 +62,7 @@
       font-size: 14rem;
       color: rgba(255, 255, 255, 1);
       // transition: all 4s ease;
+
     }
 
     a {
@@ -94,8 +92,8 @@
 
 .welcome {
   position: relative;
-  min-height: 90vh;
-
+  min-height: 50vh;
+background: linear-gradient(45deg, #000, #222255);
   @media screen and (min-width:768px) {
     min-height: 100vh;
 
@@ -109,15 +107,15 @@
     align-items: flex-end;
     justify-content: flex-start;
     margin: 0 auto;
-    padding: 2rem 2rem;
+    padding: 2rem 1rem;
     left: 50px;
     right: 0;
     left: 0;
-    padding-left: calc(50px + 2rem);
-    min-height: 90vh;
+    padding-left: calc(50px + 0rem);
+
+    min-height: 50vh;
     user-select: none;
     pointer-events: none;
-    // mix-blend-mode: difference;
 
     @media screen and (min-width:768px) {
       min-height: 100vh;
@@ -134,6 +132,7 @@
     object-fit: cover;
     object-position: center;
     min-height: 60vh;
+
     height: 60vh;
 
     @media screen and (min-width:768px) {
@@ -148,7 +147,7 @@
   }
 
   .h1 {
-    font-size: 50px;
+    font-size: 2.2rem;
     font-weight: 700;
     line-height: 1;
     margin: 0 0 15px;
@@ -158,17 +157,24 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+    span {}
+
     @media screen and (min-width:768px) {
       font-size: 5rem;
     }
   }
 
   .subtitle {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.4;
-    margin: 0px 0 0px;
+    margin: 0px 0 1rem;
     display: inline-block;
+    @media screen and (min-width:768px) {
+      font-size: 2.5rem;
+  
+    }
+  
   }
 
   .title {
@@ -184,9 +190,16 @@
     color: hsla(0, 0%, 100%, .8);
     margin-bottom: 1rem;
     font-size: 1.4rem;
-    font-size: 22px;
     line-height: 1.4;
+    max-width: 600px;
     letter-spacing: .01em;
+    font-size: 1rem;
+
+    @media screen and (min-width:768px) {
+      font-size: 22px;
+      padding: 0;
+
+    }
   }
 
   .btn_link {
@@ -237,7 +250,7 @@ section.followme {
   width: 50px;
   justify-content: center;
   // border-right: 1px solid #ffffff36;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
 
   >div {
     position: relative;
@@ -246,7 +259,7 @@ section.followme {
   .phone {
     padding-right: 5px;
     position: absolute !important;
-    top: 150px;
+    top: 165px;
     left: 13px;
     color: #bbb;
     font-size: 14px;
@@ -262,7 +275,7 @@ section.followme {
     padding-right: 5px;
     position: absolute;
     bottom: 120%;
-    right: -47px;
+    right: -60px;
     color: #bbb;
     font-size: 14px;
     line-height: 24px;
@@ -337,6 +350,9 @@ section.followme {
 }
 
 .device {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
   position: relative;
 }
 
@@ -364,18 +380,25 @@ section.followme {
 .portfolio {
 
   padding: 90px 0;
-  background: rgba(34,34,85, 1.0);
+  background: rgba(34, 34, 85, 1.0);
 
   position: relative;
   padding-left: 50px;
   color: #fff;
-  h2{
+
+  h2 {
     color: #05FFA1;
+    margin: 0;
     text-align: left;
+    @media screen and (min-width:768px) {
+      text-align: center;
+    }
   }
-  h5{
+
+  h5 {
     color: #05FFA1;
   }
+
   .showcase {
     display: grid;
     padding: 30px 0 90px;
@@ -384,29 +407,26 @@ section.followme {
     align-items: center;
 
     @media screen and (min-width:1050px) {
-      grid-template-columns: 1fr;
-
-      &:nth-child(3) {
-        grid-template-columns: 0.5fr 1.5fr;
-
-        span {
-          grid-row: 1;
-        }
-      }
+      grid-template-columns: 1fr 1fr;
     }
 
 
     .casestudy_name {
-      text-align: center;
+      text-align: left;
       color: #fff;
-      text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+      max-width: 600px;
+      margin: 0 auto;
+
       @media screen and (min-width:1050px) {
+      text-align: center;
+        
       }
 
       h5 {
+        font-size: 1.2rem;
+        @media screen and (min-width:1050px) {
         font-size: 2rem;
+          }
       }
 
       .case_about {
@@ -420,13 +440,16 @@ section.followme {
 
   .container {
     margin: 0 auto;
-    padding: 0 2rem;
+    padding:0 1rem 0 0rem;
+    @media screen and (min-width:1050px) {
+      padding: 0 2rem;
+    }
   }
 
   .header {
     margin: 0 0 2rem;
     text-align: center;
-    color: #000;
+    color: #fff;
   }
 
 
@@ -522,15 +545,18 @@ section.followme {
 
 section.services {
   padding: 90px 0;
-  background: #521b81;
+  background: #521b818f;
   position: relative;
   padding-left: 50px;
-  .overlay{
+  margin-top: 50vh;
+
+  .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+
     // filter: blur(180px);
     &:after {
       content: "";
@@ -542,10 +568,10 @@ section.services {
       // background: conic-gradient(from 180deg at 50% 50%, #0aefff -69.37deg, #0f83ff 31.88deg, #b056e7 120deg, #ff9966 204.37deg, #0aefff 290.63deg, #0f83ff 391.87deg), #a84ddf;
       opacity: .3;
       z-index: 1;
-      
+
     }
   }
-  
+
 
   .service_image {
     margin-bottom: 4rem;
@@ -617,23 +643,24 @@ section.services {
     display: grid;
     grid-template-columns: 1fr;
     margin: 0 auto;
-    padding: 0 2rem 0;
     gap: 40px;
     position: relative;
     z-index: 10;
 
     display: flex;
     flex-direction: column;
-
+    padding:0 1rem 0 0rem;
     @media screen and (min-width:768px) {
       grid-template-columns: 0.5fr 1fr;
+      padding: 0 2rem;
     }
   }
 
   .h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-color: #00eeee;
+    color: #00eeee;
+
     @media screen and (min-width:768px) {
       font-size: 3rem;
     }
@@ -643,11 +670,12 @@ color: #00eeee;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
     position: relative;
     border-radius: 10px;
 
     @media screen and (min-width:768px) {
+      padding: 2rem;
+
     }
 
     &:after {
@@ -714,32 +742,70 @@ color: #00eeee;
     color: #00eeee;
     font-size: 1.5rem;
 
-    @media screen and (min-width:768px) {}
+    @media screen and (min-width:768px) {
+    font-size: 2rem;
+
+    }
   }
 
   header.heade {
-    text-align: center;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
+
     @media screen and (min-width:768px) {
+      text-align: center;
+
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto;
     }
   }
 }
 
-.more_projects{
-  .projects_header{
+.more_projects {
+  .projects_header {
     margin-bottom: 1rem;
   }
+
   .more_projects_grid {
     display: grid;
     max-width: 1100px;
     margin: 0 auto;
     gap: 80px;
-    
+
     @media screen and (min-width:768px) {
-    grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr ;
 
     }
+
+    .projects{
+      position: relative;
+      padding: 2rem;
+      > *{
+        position: relative;
+        z-index: 10;
+      }
+      &:after{
+        content: '';
+        background:linear-gradient(45deg, #131330, transparent);
+      mix-blend-mode: multiply;
+      left: 0;
+      right: 0;
+      position: absolute;
+      grid-column: 1 / 13;
+      z-index: 0;
+      height: 100%;
+      opacity: .7;
+      top: 0;
+      }
+    }
+  }
+
+  .project{
+    margin: 2rem 0;
+    text-align: center;
   }
 }
 
@@ -747,24 +813,28 @@ color: #00eeee;
 .modal {
   font-size: 12px;
 }
-.modal > .header {
+
+.modal>.header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+
+.modal>.content {
   width: 100%;
   padding: 10px 5px;
 }
-.modal > .actions {
+
+.modal>.actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
 }
-.modal > .close {
+
+.modal>.close {
   cursor: pointer;
   position: absolute;
   display: block;
