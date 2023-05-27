@@ -93,7 +93,8 @@
 .welcome {
   position: relative;
   min-height: 50vh;
-background: linear-gradient(45deg, #000, #222255);
+  background: linear-gradient(45deg, #000, #222255);
+
   @media screen and (min-width:768px) {
     min-height: 100vh;
 
@@ -170,11 +171,12 @@ background: linear-gradient(45deg, #000, #222255);
     line-height: 1.4;
     margin: 0px 0 1rem;
     display: inline-block;
+
     @media screen and (min-width:768px) {
       font-size: 2.5rem;
-  
+
     }
-  
+
   }
 
   .title {
@@ -390,6 +392,7 @@ section.followme {
     color: #05FFA1;
     margin: 0;
     text-align: left;
+
     @media screen and (min-width:768px) {
       text-align: center;
     }
@@ -406,9 +409,18 @@ section.followme {
     gap: 30px 0;
     align-items: center;
 
+    &:nth-child(3) {
+      .device {
+        @media screen and (min-width:1050px) {
+        order: 1;
+        }
+      }
+    }
+
     @media screen and (min-width:1050px) {
       grid-template-columns: 1fr 1fr;
     }
+
 
 
     .casestudy_name {
@@ -418,15 +430,16 @@ section.followme {
       margin: 0 auto;
 
       @media screen and (min-width:1050px) {
-      text-align: center;
-        
+        text-align: center;
+
       }
 
       h5 {
         font-size: 1.2rem;
+
         @media screen and (min-width:1050px) {
-        font-size: 2rem;
-          }
+          font-size: 2rem;
+        }
       }
 
       .case_about {
@@ -440,14 +453,16 @@ section.followme {
 
   .container {
     margin: 0 auto;
-    padding:0 1rem 0 0rem;
+    padding: 0 1rem 0 0rem;
+
     @media screen and (min-width:1050px) {
       padding: 0 2rem;
     }
   }
 
   .header {
-    margin: 0 0 2rem;
+    max-width: 950px;
+    margin: 0 auto 2rem;
     text-align: center;
     color: #fff;
   }
@@ -649,7 +664,8 @@ section.services {
 
     display: flex;
     flex-direction: column;
-    padding:0 1rem 0 0rem;
+    padding: 0 1rem 0 0rem;
+
     @media screen and (min-width:768px) {
       grid-template-columns: 0.5fr 1fr;
       padding: 0 2rem;
@@ -743,7 +759,7 @@ section.services {
     font-size: 1.5rem;
 
     @media screen and (min-width:768px) {
-    font-size: 2rem;
+      font-size: 2rem;
 
     }
   }
@@ -776,34 +792,36 @@ section.services {
     gap: 80px;
 
     @media screen and (min-width:768px) {
-      grid-template-columns: 1fr ;
+      grid-template-columns: 1fr;
 
     }
 
-    .projects{
+    .projects {
       position: relative;
       padding: 2rem;
-      > *{
+
+      >* {
         position: relative;
         z-index: 10;
       }
-      &:after{
+
+      &:after {
         content: '';
-        background:linear-gradient(45deg, #131330, transparent);
-      mix-blend-mode: multiply;
-      left: 0;
-      right: 0;
-      position: absolute;
-      grid-column: 1 / 13;
-      z-index: 0;
-      height: 100%;
-      opacity: .7;
-      top: 0;
+        // background:linear-gradient(45deg, #131330, transparent);
+        // mix-blend-mode: multiply;
+        left: 0;
+        right: 0;
+        position: absolute;
+        grid-column: 1 / 13;
+        z-index: 0;
+        height: 100%;
+        opacity: .7;
+        top: 0;
       }
     }
   }
 
-  .project{
+  .project {
     margin: 2rem 0;
     text-align: center;
   }

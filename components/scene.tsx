@@ -65,7 +65,7 @@ export default function Scene({ setBg }) {
       coat: mode && !hovered ? 0.04 : 0.6,
       ambient: mode && !hovered ? 0.5 : 0.5,
       env: mode && !hovered ? 0.4 : 0.5,
-      color: hovered ? "#0e1d2d" : mode ? "#05FFA1" : "#1c1b53",
+      color: hovered ? "#0e1d2d" : mode ? "#1c1b53" : "#1c1b53",
       config: (n) =>
         n === "wobble" && hovered && { mass: 4, tension: 500, friction: 20 },
     },
@@ -87,7 +87,7 @@ export default function Scene({ setBg }) {
         />
       </PerspectiveCamera>
 
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <a.mesh
           // @ts-ignore
           ref={sphere}
@@ -124,8 +124,8 @@ export default function Scene({ setBg }) {
           height={15}
           blur={2.5}
           far={1.6}
-        />
-      </Suspense>
+        /> */}
+      {/* </Suspense> */}
     </>
   );
 }

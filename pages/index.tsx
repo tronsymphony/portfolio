@@ -87,6 +87,7 @@ export default function Home() {
               <h1 className={styles.h1}>
                 Nitya Hoyos<span>_</span>
               </h1>
+              {/* abouy curious . ai to help user understand webpage */}
               <p className={styles.context}>
                 I&apos;m a full-stack developer engineering elegant, performant,
                 and powerful web applications.
