@@ -9,7 +9,7 @@ export default function Footer() {
       <footer className={styles.footer_main}>
         <div className="container">
           <div className={styles.content}>
-            <h2 className="h2">Interested in working together?</h2>
+            <h2 className="h2">START OUR JOURNEY TOGETHER</h2>
             <p>
               From front-end to back-end and everything in between, let&apos;s
               build something amazing together. Work with me to bring your
