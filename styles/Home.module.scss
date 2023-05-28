@@ -104,7 +104,7 @@
     top: 0;
     bottom: 0;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
     margin: 0 auto;
     padding: 2rem 1rem;
@@ -153,7 +153,7 @@
   .arrow{
     position: absolute;
     bottom: 0;
-    left: 50px;
+    right: 50px;
     margin: 4rem 4rem;
     animation: svelte-1sofsu1-arrowpulse 2s ease 0s infinite;
   }
@@ -165,8 +165,6 @@
     bottom: 0;
     transform: translate(0%, -50%);
     opacity: 0.1;
-    user-select: none;
-    pointer-events: none;
     z-index: 1;
     max-width: 100%;
     max-height: 70vh;
@@ -421,7 +419,7 @@ section.followme {
   .header_space {
     margin-bottom: 2rem;
     padding: 4rem 2rem;
-
+    align-items: center;
     @media screen and (min-width:768px) {
       display: grid;
       grid-template-columns: 1fr 1fr  ;
@@ -451,6 +449,12 @@ section.followme {
     grid-template-columns: 1fr;
     gap: 30px 0;
     align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1882352941);
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    align-items: flex-start;
+    background: #5f5f5f80;
 
     &:nth-child(3) {
       .device {

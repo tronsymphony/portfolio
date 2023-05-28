@@ -200,7 +200,7 @@ export default function Home() {
               </p>
               
 
-              <div className={"btn"}>
+              <div className={styles.btn}>
               <a href="mailto:nityahoyos@gmail.com" className={"btn_link btn_link--light"}>
                   Start Engaging Your Customers Today
                   <span className={styles.chevron}>
