@@ -99,6 +99,15 @@
 
   }
 
+  .btn_content{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    display: grid;
+    gap: 1rem;
+    z-index: 10;
+  }
+
   .container {
     position: relative;
     top: 0;
@@ -141,22 +150,26 @@
 
     }
   }
+
   @keyframes svelte-1sofsu1-arrowpulse {
     50% {
-        transform: translateY(-6px)
+      transform: translateY(-6px)
     }
   }
+
   .content {
     position: relative;
     z-index: 12;
   }
-  .arrow{
+
+  .arrow {
     position: absolute;
     bottom: 0;
     right: 50px;
     margin: 4rem 4rem;
     animation: svelte-1sofsu1-arrowpulse 2s ease 0s infinite;
   }
+
   .bg {
     position: absolute;
     top: 50%;
@@ -409,7 +422,7 @@ section.followme {
 .portfolio {
 
   padding: 90px 0;
-  background: rgb(0 0 0 / 58%);
+  background: rgb(0 0 0 / 55%);
 
 
   position: relative;
@@ -420,9 +433,10 @@ section.followme {
     margin-bottom: 2rem;
     padding: 4rem 2rem;
     align-items: center;
+
     @media screen and (min-width:768px) {
       display: grid;
-      grid-template-columns: 1fr 1fr  ;
+      grid-template-columns: 1fr 1fr;
 
     }
   }
@@ -453,8 +467,7 @@ section.followme {
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     padding: 4rem 2rem;
     margin: 2rem 0;
-    align-items: flex-start;
-    background: #5f5f5f80;
+    align-items: center;
 
     &:nth-child(3) {
       .device {
@@ -473,7 +486,7 @@ section.followme {
     .casestudy_name {
       text-align: left;
       color: #fff;
-      max-width: 600px;
+      max-width: 400px;
       margin: 0 auto;
 
       @media screen and (min-width:1050px) {}
@@ -603,7 +616,7 @@ section.followme {
 
 section.services {
   padding: 90px 0;
-  background: rgb(27 33 129 / 31%);
+  background: rgb(18 18 46 / 55%);
   position: relative;
   padding-left: 50px;
 
@@ -635,7 +648,7 @@ section.services {
     fill: #ffffff9e;
     margin-bottom: 1rem;
   }
-  
+
   .service_image {
     margin-bottom: 4rem;
     overflow: hidden;
@@ -731,8 +744,8 @@ section.services {
       font-size: 3rem;
     }
 
- 
- 
+
+
   }
 
   .item {
@@ -743,6 +756,7 @@ section.services {
     border-radius: 10px;
     border: 1px solid #ffffff30;
     padding: 1rem;
+
     @media screen and (min-width:768px) {
       flex: 0 0 calc(32% - 20px);
     }
@@ -758,7 +772,7 @@ section.services {
     //   z-index: 1;
     //   opacity: 0.05;
     // }
- 
+
     @media screen and (min-width:768px) {}
   }
 
@@ -780,9 +794,8 @@ section.services {
   .item .h3 {
     padding: 0 0 0.5rem;
     color: #00eeee;
-    @media screen and (min-width:768px) {
 
-    }
+    @media screen and (min-width:768px) {}
   }
 
   .heade {
@@ -799,11 +812,12 @@ section.services {
       margin: 0 auto 1rem;
       margin-bottom: 1rem;
     }
+
     .btn {
       display: flex;
       justify-content: center;
       gap: 1rem;
-  }
+    }
   }
 }
 
@@ -892,4 +906,3 @@ section.services {
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
-
